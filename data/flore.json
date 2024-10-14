@@ -1,0 +1,298 @@
+{
+    "plants": [
+        {
+            "common_name": "Achillée millefeuille",
+            "scientific_name": "Achillea millefolium",
+            "species": "Achillea",
+            "family": "Asteraceae",
+            "description": "L'Achillée millefeuille est une plante herbacée vivace, connue pour ses propriétés médicinales. Ses feuilles finement découpées ressemblent à des plumes, et ses petites fleurs blanches ou roses sont regroupées en ombelles plates. Elle est couramment utilisée pour ses effets anti-inflammatoires et cicatrisants."
+        },
+        {
+            "common_name": "Achillée sternutatoire",
+            "scientific_name": "Achillea ptarmica",
+            "species": "Achillea",
+            "family": "Asteraceae",
+            "description": "Cette plante vivace pousse dans les prairies humides. Elle est reconnaissable par ses fleurs blanches en forme de petites étoiles, portées par des tiges droites et élancées. Ses feuilles sont simples, allongées et légèrement dentées."
+        },
+        {
+            "common_name": "Adoxe musquée",
+            "scientific_name": "Adoxa moschatellina",
+            "species": "Adoxa",
+            "family": "Adoxaceae",
+            "description": "L'Adoxe musquée est une petite plante vivace des bois frais, au parfum musqué subtil. Elle se distingue par ses petites fleurs verdâtres qui forment des inflorescences sphériques et ses feuilles finement découpées à l’aspect délicat."
+        },
+        {
+            "common_name": "Airelle myrtille",
+            "scientific_name": "Vaccinium myrtillas",
+            "species": "Vaccinium",
+            "family": "Ericaceae",
+            "description": "L'airelle myrtille est un petit arbrisseau à tiges anguleuses et à feuilles ovales, légèrement dentées. Elle produit des baies sphériques bleu foncé ou noires, très prisées pour leurs propriétés antioxydantes."
+        },
+        {
+            "common_name": "Alchemille vert-jaunâtre",
+            "scientific_name": "Alchemilla xanthochlora",
+            "species": "Alchemilla",
+            "family": "Rosaceae",
+            "description": "L'Alchemille est une plante vivace appréciée pour ses grandes feuilles en forme d'éventail, dont la surface est souvent couverte de gouttelettes d'eau. Ses petites fleurs jaunes-vertes forment des grappes discrètes."
+        },
+        {
+            "common_name": "Alisier blanc",
+            "scientific_name": "Sarbus aria",
+            "species": "Sorbus",
+            "family": "Rosaceae",
+            "description": "L'Alisier blanc est un arbre de taille moyenne, avec des feuilles ovales à bord denté, argentées en dessous. En automne, il produit des baies rouges qui contrastent avec son feuillage vert foncé."
+        },
+        {
+            "common_name": "Alliaire officinale",
+            "scientific_name": "Allium petiolata",
+            "species": "Alliaria",
+            "family": "Brassicaceae",
+            "description": "L'Alliaire officinale est une plante herbacée aux feuilles en forme de cœur, dentelées et légèrement brillantes. Ses petites fleurs blanches à quatre pétales apparaissent au printemps, et ses graines sont contenues dans de longues siliques."
+        },
+        {
+            "common_name": "Angélique des bois",
+            "scientific_name": "Angelica sylvestris",
+            "species": "Angelica",
+            "family": "Apiaceae",
+            "description": "Plante haute et robuste, l'Angélique des bois possède de larges feuilles composées et des ombelles de petites fleurs blanches ou roses. Elle pousse souvent en bordure des forêts."
+        },
+        {
+            "common_name": "Aspérule odorante",
+            "scientific_name": "Galium odoratum",
+            "species": "Galium",
+            "family": "Rubiaceae",
+            "description": "Petite plante tapissante des sous-bois, l'Aspérule odorante est connue pour son parfum agréable. Ses feuilles vert foncé sont disposées en verticilles autour de tiges fines, et ses petites fleurs blanches dégagent une douce fragrance."
+        },
+        {
+            "common_name": "Aubépine monogyne",
+            "scientific_name": "Crataegus monogyna",
+            "species": "Crataegus",
+            "family": "Rosaceae",
+            "description": "L'Aubépine monogyne est un arbuste épineux, au feuillage lobé et à fleurs blanches odorantes. Ses baies rouges, appelées cenelles, apparaissent à la fin de l'été."
+        },
+        {
+            "common_name": "Aubépine à 2 styles",
+            "scientific_name": "Cratagues laevigata",
+            "species": "Crataegus",
+            "family": "Rosaceae",
+            "description": "Cet arbuste épineux se distingue par ses fleurs blanches ou roses à deux styles et ses baies rouges foncées. Ses feuilles sont plus arrondies que celles de l'Aubépine monogyne."
+        },
+        {
+            "common_name": "Aulne glutineux",
+            "scientific_name": "Alnus glutinosa",
+            "species": "Alnus",
+            "family": "Betulaceae",
+            "description": "Grand arbre au feuillage vert foncé, l'Aulne glutineux pousse souvent près des zones humides. Ses cônes ligneux sont caractéristiques, et ses feuilles sont légèrement collantes au toucher."
+        },
+        {
+            "common_name": "Baldingère",
+            "scientific_name": "Phalaris arundinacea",
+            "species": "Phalaris",
+            "family": "Poaceae",
+            "description": "Graminée vivace des zones humides, la Baldingère forme de grandes touffes de tiges rigides et de longues feuilles rubanées. Ses inflorescences en épis sont de couleur vert pâle."
+        },
+        {
+            "common_name": "Balsamine à petites fleurs",
+            "scientific_name": "Impatiens parviflora",
+            "species": "Impatiens",
+            "family": "Balsaminaceae",
+            "description": "Petite plante annuelle aux fleurs discrètes, jaune pâle, la Balsamine à petites fleurs se développe rapidement en sous-bois ombragés. Ses feuilles sont ovales et dentées, et ses graines sont éjectées à maturité."
+        },
+        {
+            "common_name": "Balsamine de l'Hymalaya",
+            "scientific_name": "Impatiens glandulifera",
+            "species": "Impatiens",
+            "family": "Balsaminaceae",
+            "description": "Plante envahissante aux fleurs roses ou pourpres en forme de casque, la Balsamine de l'Himalaya pousse souvent près des cours d'eau. Ses longues tiges creuses et ses feuilles dentées la rendent reconnaissable."
+        },
+        {
+            "common_name": "Balsamine des bois",
+            "scientific_name": "Impatiens noli-tangere",
+            "species": "Impatiens",
+            "family": "Balsaminaceae",
+            "description": "Cette plante annuelle est reconnaissable à ses fleurs jaunes en forme de clochettes. Elle pousse dans les zones humides et ombragées, et ses feuilles sont dentées et pointues."
+        },
+        {
+            "common_name": "Bazzanie trinlobée",
+            "scientific_name": "Bazzania trilobata",
+            "species": "Bazzania",
+            "family": "Lepidoziaceae",
+            "description": "Cette mousse vivace se distingue par ses feuilles en forme de lobes trilobés qui forment des tapis denses dans les forêts humides. Elle est souvent de couleur vert sombre."
+        },
+        {
+            "common_name": "Berce commune",
+            "scientific_name": "Heracleum sphondylium",
+            "species": "Heracleum",
+            "family": "Apiaceae",
+            "description": "Plante robuste aux grandes feuilles lobées et aux tiges poilues, la Berce commune produit des ombelles de fleurs blanches ou roses. Ses tiges peuvent atteindre deux mètres de hauteur."
+        },
+        {
+            "common_name": "Bétoine officinale",
+            "scientific_name": "Betonica officinale",
+            "species": "Betonica",
+            "family": "Lamiaceae",
+            "description": "Plante vivace aux feuilles lancéolées et aux épis de fleurs pourpres, la Bétoine officinale est souvent trouvée dans les prairies. Ses fleurs sont regroupées en épis denses au sommet des tiges."
+        },
+        {
+            "common_name": "Bistorte officinale",
+            "scientific_name": "Bistorta officinalis",
+            "species": "Bistorta",
+            "family": "Polygonaceae",
+            "description": "Plante vivace avec de longues feuilles en forme de lance et des épis de fleurs roses, la Bistorte est souvent présente dans les prairies humides. Ses fleurs denses forment des inflorescences cylindriques."
+        },
+        {
+            "common_name": "Blechne en épi",
+            "scientific_name": "Struthiopteris spicant",
+            "species": "Struthiopteris",
+            "family": "Blechnaceae",
+            "description": "Fougère vivace des forêts humides, la Blechne en épi se caractérise par ses frondes longues et étroites, avec des frondes stériles en rosette et des frondes fertiles dressées au centre."
+        },
+        {
+            "common_name": "Bouleau verruqueux",
+            "scientific_name": "Betula pendula",
+            "species": "Betula",
+            "family": "Betulaceae",
+            "description": "Arbre élancé à écorce blanche, souvent marquée de tâches noires, le Bouleau verruqueux est facilement reconnaissable. Ses petites feuilles triangulaires deviennent jaunes à l’automne."
+        },
+        {
+            "common_name": "Bourdaine",
+            "scientific_name": "Frangula dodonaei",
+            "species": "Frangula",
+            "family": "Rhamnaceae",
+            "description": "Petit arbre ou arbuste aux feuilles ovales et brillantes, la Bourdaine produit des baies noires en automne. Son écorce est lisse et de couleur gris-brun."
+        },
+        {
+            "common_name": "Bourrache officinale",
+            "scientific_name": "Borago officinalis",
+            "species": "Borago",
+            "family": "Boraginaceae",
+            "description": "Plante herbacée annuelle aux tiges poilues et aux grandes fleurs étoilées bleues, la Bourrache officinale est souvent cultivée pour ses propriétés médicinales. Ses feuilles sont rugueuses et épaisses."
+        },
+        {
+            "common_name": "Bugle rampante",
+            "scientific_name": "Ajuga repetans",
+            "species": "Ajuga",
+            "family": "Lamiaceae",
+            "description": "Plante vivace tapissante aux feuilles ovales et brillantes, la Bugle rampante produit des épis de petites fleurs bleu-violet. Elle est souvent utilisée comme couvre-sol dans les jardins."
+        },
+        {
+            "common_name": "Buis commun",
+            "scientific_name": "Buxus sempervirens",
+            "species": "Buxus",
+            "family": "Buxaceae",
+            "description": "Arbuste au feuillage persistant, le Buis commun est souvent utilisé pour les haies et l’art topiaire. Ses petites feuilles vert foncé sont ovales et coriaces, et il produit de petites fleurs jaunes discrètes."
+        },
+        {
+            "common_name": "Callitriche des eaux stagnantes",
+            "scientific_name": "Callitriche stagnalis",
+            "species": "Callitriche",
+            "family": "Plantaginaceae",
+            "description": "Plante aquatique flottante, la Callitriche des eaux stagnantes a de petites feuilles rondes qui forment des rosettes à la surface de l'eau. Ses tiges sont fines et ses fleurs sont très petites et discrètes."
+        },
+        {
+            "common_name": "Callitriche à crochets",
+            "scientific_name": "Callitriche hamulata",
+            "species": "Callitriche",
+            "family": "Plantaginaceae",
+            "description": "Cette plante aquatique se caractérise par ses feuilles flottantes en forme de spatule et ses graines qui possèdent de petits crochets. Elle préfère les eaux calmes et peu profondes."
+        },
+        {
+            "common_name": "Callune commune",
+            "scientific_name": "Calluna vulgaris",
+            "species": "Calluna",
+            "family": "Ericaceae",
+            "description": "Arbrisseau à feuilles persistantes, la Callune commune forme des tapis denses dans les landes. Ses petites fleurs roses ou violettes apparaissent à la fin de l'été, et ses feuilles sont petites et écailleuses."
+        },
+        {
+            "common_name": "Campanule à feuilles rondes",
+            "scientific_name": "Campanula rotundifolia",
+            "species": "Campanula",
+            "family": "Campanulaceae",
+            "description": "Plante vivace aux fleurs en forme de clochettes bleues ou violettes, la Campanule à feuilles rondes est commune dans les prairies. Ses feuilles basales sont arrondies, tandis que les feuilles sur la tige sont étroites."
+        },
+        {
+            "common_name": "Campanule gantelée",
+            "scientific_name": "Campanula trachelium",
+            "species": "Campanula",
+            "family": "Campanulaceae",
+            "description": "Cette campanule vivace est reconnaissable à ses fleurs en forme de clochettes bleues, qui sont poilues à l'intérieur. Ses feuilles sont en forme de cœur et dentelées, et la plante peut atteindre jusqu'à un mètre de hauteur."
+        },
+        {
+            "common_name": "Canche cespiteuse",
+            "scientific_name": "Deschampsia cespitosa",
+            "species": "Deschampsia",
+            "family": "Poaceae",
+            "description": "Graminée vivace formant des touffes denses, la Canche cespiteuse produit des inflorescences plumeuses et légères qui changent de couleur, passant du vert au doré à la fin de l'été."
+        },
+        {
+            "common_name": "Canche fluxueuse",
+            "scientific_name": "Avenella flexuosa",
+            "species": "Avenella",
+            "family": "Poaceae",
+            "description": "Cette petite graminée des landes et des sous-bois se distingue par ses tiges fines et flexibles, qui portent des inflorescences légères et éparses. Ses feuilles sont étroites et souvent recourbées."
+        },
+        {
+            "common_name": "Capillaire des murailles",
+            "scientific_name": "Asplenium trichomanes",
+            "species": "Asplenium",
+            "family": "Aspleniaceae",
+            "description": "Petite fougère gracieuse, la Capillaire des murailles pousse souvent sur les murs et les rocailles. Elle se distingue par ses frondes fines et légères, divisées en petites folioles rondes ou ovales."
+        },
+        {
+            "common_name": "Cardamine amère",
+            "scientific_name": "Cardamine amara",
+            "species": "Cardamine",
+            "family": "Brassicaceae",
+            "description": "Plante vivace des zones humides, la Cardamine amère possède des fleurs blanches ou roses en petites grappes. Ses feuilles sont composées de folioles arrondies, et elle préfère les sols riches en eau."
+        },
+        {
+            "common_name": "Cardamine hérissée",
+            "scientific_name": "Cardamine hirsuta",
+            "species": "Cardamine",
+            "family": "Brassicaceae",
+            "description": "Plante annuelle à petites fleurs blanches, la Cardamine hérissée pousse dans les sols perturbés. Ses feuilles sont composées de plusieurs petites folioles arrondies, et ses siliques sont longues et fines."
+        },
+        {
+            "common_name": "Bleuet des moissons",
+            "scientific_name": "Cyanus segetum",
+            "species": "Cyanus",
+            "family": "Asteraceae",
+            "description": "Plante herbacée annuelle, le Bleuet des moissons est connu pour ses fleurs bleu vif en capitules. Ses feuilles sont fines et linéaires, et il pousse souvent dans les champs et les prairies."
+        },
+        {
+            "common_name": "Centaurée noire",
+            "scientific_name": "Centaurea nigra",
+            "species": "Centaurea",
+            "family": "Asteraceae",
+            "description": "Cette plante vivace produit des capitules de fleurs pourpres ou roses, avec un centre noir. Ses feuilles sont allongées et légèrement poilues, et elle est souvent trouvée dans les prairies."
+        },
+        {
+            "common_name": "Cerfeuil hérissé",
+            "scientific_name": "Chaerophyllum hirsutum",
+            "species": "Chaerophyllum",
+            "family": "Apiaceae",
+            "description": "Plante vivace herbacée, le Cerfeuil hérissé a des tiges couvertes de poils et des feuilles finement découpées, rappelant celles du persil. Ses fleurs sont blanches et disposées en ombelles."
+        },
+        {
+            "common_name": "Cerfeuil sauvage",
+            "scientific_name": "Anthriscus sylvestris",
+            "species": "Anthriscus",
+            "family": "Apiaceae",
+            "description": "Plante vivace avec des tiges élancées et des feuilles finement découpées, le Cerfeuil sauvage produit des ombelles de petites fleurs blanches. Elle est souvent présente dans les prairies et les bords de chemins."
+        },
+        {
+            "common_name": "Charme commun",
+            "scientific_name": "Carpinus betulus",
+            "species": "Carpinus",
+            "family": "Betulaceae",
+            "description": "Arbre à feuillage caduc, le Charme commun a des feuilles dentelées et nervurées en forme de losange. Son écorce est grise et lisse, se fissurant avec l'âge. Il forme souvent des haies denses."
+        },
+        {
+            "common_name": "Châtaignier",
+            "scientific_name": "Castanea sativa",
+            "species": "Castanea",
+            "family": "Fagaceae",
+            "description": "Grand arbre avec une écorce fissurée et des feuilles allongées et dentelées, le Châtaignier produit des fruits comestibles (châtaignes) en automne, enfermés dans des bogues épineuses."
+        }
+    ]
+}
