@@ -1,0 +1,184 @@
+[
+    {
+        "nom_commun": "Chamois",
+        "nom_scientifique": "Rupicapra rupicapra",
+        "espece": "Mammifère",
+        "famille": "Bovidae",
+        "description": "Animal agile aux pattes fines et aux cornes recourbées, généralement de couleur brunâtre avec un ventre plus clair."
+    },
+    {
+        "nom_commun": "Cerf élaphe",
+        "nom_scientifique": "Cervus elaphus",
+        "espece": "Mammifère",
+        "famille": "Cervidae",
+        "description": "Grand mammifère au pelage brun roux, avec un large ramure chez les mâles, visible principalement en automne lors du brame."
+    },
+    {
+        "nom_commun": "Chevreuil",
+        "nom_scientifique": "Capreolus capreolus",
+        "espece": "Mammifère",
+        "famille": "Cervidae",
+        "description": "Animal de taille moyenne avec un pelage brun-roux, une queue courte et des petites cornes chez les mâles."
+    },
+    {
+        "nom_commun": "Sanglier",
+        "nom_scientifique": "Sus scrofa",
+        "espece": "Mammifère",
+        "famille": "Suidae",
+        "description": "Grand mammifère au pelage brun-gris, avec une tête massive et des défenses visibles chez les mâles."
+    },
+    {
+        "nom_commun": "Renard roux",
+        "nom_scientifique": "Vulpes vulpes",
+        "espece": "Mammifère",
+        "famille": "Canidae",
+        "description": "Animal rusé au pelage roux avec un ventre blanc et une queue touffue, souvent aperçu au crépuscule."
+    },
+    {
+        "nom_commun": "Lynx boréal",
+        "nom_scientifique": "Lynx lynx",
+        "espece": "Mammifère",
+        "famille": "Felidae",
+        "description": "Grand félin avec un pelage tacheté, des oreilles pointues avec des touffes de poils et une queue courte."
+    },
+    {
+        "nom_commun": "Hermine",
+        "nom_scientifique": "Mustela erminea",
+        "espece": "Mammifère",
+        "famille": "Mustelidae",
+        "description": "Petit mammifère au pelage brun en été, devenant blanc en hiver, avec une queue courte et fine."
+    },
+    {
+        "nom_commun": "Grand tétras",
+        "nom_scientifique": "Tetrao urogallus",
+        "espece": "Oiseau",
+        "famille": "Phasianidae",
+        "description": "Grand oiseau aux plumes brunes et noires, le mâle possède un plumage plus coloré avec une queue en forme d’éventail."
+    },
+    {
+        "nom_commun": "Buse variable",
+        "nom_scientifique": "Buteo buteo",
+        "espece": "Oiseau",
+        "famille": "Accipitridae",
+        "description": "Rapace de taille moyenne avec un plumage varié, souvent brun foncé, et une queue courte."
+    },
+    {
+        "nom_commun": "Faucon crécerelle",
+        "nom_scientifique": "Falco tinnunculus",
+        "espece": "Oiseau",
+        "famille": "Falconidae",
+        "description": "Petit rapace avec un plumage beige et des motifs foncés, souvent vu en vol stationnaire."
+    },
+    {
+        "nom_commun": "Pic noir",
+        "nom_scientifique": "Dryocopus martius",
+        "espece": "Oiseau",
+        "famille": "Picidae",
+        "description": "Grand pic avec un plumage entièrement noir et un bec robuste, souvent aperçu dans les forêts de conifères."
+    },
+    {
+        "nom_commun": "Geai des chênes",
+        "nom_scientifique": "Garrulus glandarius",
+        "espece": "Oiseau",
+        "famille": "Corvidae",
+        "description": "Corvidé coloré avec un plumage brun, des ailes bleu et noir, et un cri strident caractéristique."
+    },
+    {
+        "nom_commun": "Mésange charbonnière",
+        "nom_scientifique": "Parus major",
+        "espece": "Oiseau",
+        "famille": "Paridae",
+        "description": "Petite mésange au plumage jaune vif, avec une tête noire et des joues blanches."
+    },
+    {
+        "nom_commun": "Hibou grand-duc",
+        "nom_scientifique": "Bubo bubo",
+        "espece": "Oiseau",
+        "famille": "Strigidae",
+        "description": "Grand rapace nocturne avec un plumage brun, des touffes d’oreilles et des yeux jaunes perçants."
+    },
+    {
+        "nom_commun": "Salamandre tachetée",
+        "nom_scientifique": "Salamandra salamandra",
+        "espece": "Amphibien",
+        "famille": "Salamandridae",
+        "description": "Amphibien noir avec des taches jaunes, souvent trouvé dans des environnements humides."
+    },
+    {
+        "nom_commun": "Crapaud commun",
+        "nom_scientifique": "Bufo bufo",
+        "espece": "Amphibien",
+        "famille": "Bufonidae",
+        "description": "Amphibien robuste avec une peau rugueuse et des couleurs allant du brun au gris."
+    },
+    {
+        "nom_commun": "Vipère aspic",
+        "nom_scientifique": "Vipera aspis",
+        "espece": "Reptile",
+        "famille": "Viperidae",
+        "description": "Serpent venimeux au corps trapu, généralement gris ou brun avec un motif en zigzag."
+    },
+    {
+        "nom_commun": "Lézard vivipare",
+        "nom_scientifique": "Zootoca vivipara",
+        "espece": "Reptile",
+        "famille": "Lacertidae",
+        "description": "Petit lézard souvent de couleur brune ou verte, capable de donner naissance à des jeunes vivants."
+    },
+    {
+        "nom_commun": "Papillon citron",
+        "nom_scientifique": "Gonepteryx rhamni",
+        "espece": "Insecte",
+        "famille": "Pieridae",
+        "description": "Papillon jaune pâle avec des ailes en forme de feuille, très actif au printemps."
+    },
+    {
+        "nom_commun": "Lucane cerf-volant",
+        "nom_scientifique": "Lucanus cervus",
+        "espece": "Insecte",
+        "famille": "Lucanidae",
+        "description": "Grand coléoptère noir, les mâles ont de grandes mandibules en forme de cornes."
+    },
+    {
+        "nom_commun": "Abeille sauvage",
+        "nom_scientifique": "Andrena spp.",
+        "espece": "Insecte",
+        "famille": "Andrenidae",
+        "description": "Insecte pollinisateur souvent vu autour des fleurs, avec un corps velu et une coloration variable."
+    },
+    {
+        "nom_commun": "Cétoine dorée",
+        "nom_scientifique": "Cetonia aurata",
+        "espece": "Insecte",
+        "famille": "Scarabaeidae",
+        "description": "Coléoptère au corps métallique vert doré, souvent trouvé sur les fleurs."
+    },
+    {
+        "nom_commun": "Truite fario",
+        "nom_scientifique": "Salmo trutta fario",
+        "espece": "Poisson",
+        "famille": "Salmonidae",
+        "description": "Poisson d'eau douce au corps fuselé, avec un dos olive et des taches noires sur les flancs."
+    },
+    {
+        "nom_commun": "Ombre commun",
+        "nom_scientifique": "Thymallus thymallus",
+        "espece": "Poisson",
+        "famille": "Salmonidae",
+        "description": "Poisson de rivière au corps allongé, avec une nageoire dorsale proéminente et une coloration argentée."
+    },
+    {
+        "nom_commun": "Écrevisse à pattes blanches",
+        "nom_scientifique": "Austropotamobius pallipes",
+        "espece": "Crustacé",
+        "famille": "Astacidae",
+        "description": "Crustacé d'eau douce au corps brun-vert, reconnaissable à ses pattes blanches et ses pinces robustes."
+    },
+    {
+        "nom_commun": "Libellule déprimée",
+        "nom_scientifique": "Libellula depressa",
+        "espece": "Insecte",
+        "famille": "Libellulidae",
+        "description": "Libellule de grande taille, avec un corps plat et large, généralement de couleur bleue ou jaune, souvent observée près des zones humides."
+    }
+]
