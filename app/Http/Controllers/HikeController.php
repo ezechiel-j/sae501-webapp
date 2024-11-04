@@ -16,7 +16,7 @@ class HikeController extends Controller
 
     public function getOneHike($id)
     {
-        $hike = Hike::findOrFail('hike_id', $id);
+        $hike = Hike::where('hike_id', $id)->firstOrfail();
         return response()->json($hike);
     }
 }
