@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use App\Models\Hiking;
+use App\Models\Hike;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 
@@ -16,9 +16,7 @@ class HikingController extends Controller
             'hike_id' => 'required|exists:hikes,hike_id',
         ]);
 
-        // Check if user has an ongoing hiking session
-        $ongoingHiking = DB::table('hiking')
-            ->where('user_id', Auth::id())
+        $ongoingHiking = Hiking::where('user_id', Auth::id())
             ->where('hiking_status', 'En cours')
             ->first();
 
@@ -28,68 +26,46 @@ class HikingController extends Controller
             ], 409);
         }
 
-        // Store the exact start time
-        $startTime = Carbon::now();
-
-        // Start new hiking session
-        DB::table('hiking')->insert([
+        $hiking = Hiking::create([
             'hike_id' => $request->hike_id,
             'user_id' => Auth::id(),
-            'hiking_start_date' => $startTime,
+            'hiking_start_date' => now(),
             'hiking_status' => 'En cours'
         ]);
 
         return response()->json([
             'message' => 'Hiking session started successfully',
-            'start_time' => $startTime
+            'hiking' => $hiking
         ], 201);
     }
 
     public function endHiking(Request $request)
     {
-        $request->validate([
-            'hike_id' => 'required|exists:hikes,hike_id',
-        ]);
-
-        // Get the current hiking session
-        $currentHiking = DB::table('hiking')
-            ->where('user_id', Auth::id())
-            ->where('hike_id', $request->hike_id)
+        $hiking = Hiking::where('user_id', Auth::id())
             ->where('hiking_status', 'En cours')
             ->first();
 
-        if (!$currentHiking) {
+        if (!$hiking) {
             return response()->json([
-                'message' => 'No ongoing hiking session found for this hike'
+                'message' => 'No ongoing hiking session found'
             ], 404);
         }
 
-        // Get the current time for end_date
-        $endTime = Carbon::now();
-
-        // Update the hiking session
-        $updated = DB::table('hiking')
-            ->where('hiking_id', $currentHiking->hiking_id)
-            ->update([
-                'hiking_end_date' => $endTime,
-                'hiking_status' => 'Terminé'
-            ]);
+        $hiking->hiking_end_date = now();
+        $hiking->hiking_status = 'Terminé';
+        $hiking->save();
 
         return response()->json([
             'message' => 'Hiking session ended successfully',
-            'start_time' => $currentHiking->hiking_start_date,
-            'end_time' => $endTime,
-            'duration' => Carbon::parse($currentHiking->hiking_start_date)->diffForHumans($endTime, true)
+            'hiking' => $hiking
         ]);
     }
 
     public function getCurrentHiking()
     {
-        $hiking = DB::table('hiking')
-            ->select('hiking.*', 'hikes.*')
-            ->join('hikes', 'hiking.hike_id', '=', 'hikes.hike_id')
-            ->where('hiking.user_id', Auth::id())
-            ->where('hiking.hiking_status', 'En cours')
+        $hiking = Hiking::with('hike')
+            ->where('user_id', Auth::id())
+            ->where('hiking_status', 'En cours')
             ->first();
 
         if (!$hiking) {
@@ -105,11 +81,9 @@ class HikingController extends Controller
 
     public function getHikingHistory()
     {
-        $hikingHistory = DB::table('hiking')
-            ->select('hiking.*', 'hikes.*')
-            ->join('hikes', 'hiking.hike_id', '=', 'hikes.hike_id')
-            ->where('hiking.user_id', Auth::id())
-            ->orderBy('hiking.hiking_start_date', 'desc')
+        $hikingHistory = Hiking::with('hike')
+            ->where('user_id', Auth::id())
+            ->orderBy('hiking_start_date', 'desc')
             ->get();
 
         return response()->json([
@@ -119,17 +93,28 @@ class HikingController extends Controller
 
     public function getHikingStats()
     {
-        $stats = DB::table('hiking')
-            ->where('user_id', Auth::id())
-            ->select(
-                DB::raw('COUNT(*) as total_hikes'),
-                DB::raw('COUNT(CASE WHEN hiking_status = "Terminé" THEN 1 END) as completed_hikes'),
-                DB::raw('COUNT(CASE WHEN hiking_status = "En cours" THEN 1 END) as ongoing_hikes')
-            )
+        $stats = Hiking::where('user_id', Auth::id())
+            ->selectRaw('
+                COUNT(*) as total_hikes,
+                COUNT(CASE WHEN hiking_status = "Terminé" THEN 1 END) as completed_hikes,
+                COUNT(CASE WHEN hiking_status = "En cours" THEN 1 END) as ongoing_hikes,
+                SUM(CASE 
+                    WHEN hiking_status = "Terminé" AND hiking_end_date IS NOT NULL 
+                    THEN TIMESTAMPDIFF(MINUTE, hiking_start_date, hiking_end_date) 
+                    ELSE 0 
+                END) as total_minutes
+            ')
             ->first();
 
+        $averageDuration = $stats->completed_hikes > 0 
+            ? round($stats->total_minutes / $stats->completed_hikes) 
+            : 0;
+
         return response()->json([
-            'stats' => $stats
+            'total_hikes' => $stats->total_hikes,
+            'completed_hikes' => $stats->completed_hikes,
+            'ongoing_hikes' => $stats->ongoing_hikes,
+            'average_duration_minutes' => $averageDuration
         ]);
     }
 }

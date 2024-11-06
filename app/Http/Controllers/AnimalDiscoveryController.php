@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use App\Models\Animal;
+use App\Models\AnimalDiscovery;
+use App\Models\Hike;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class AnimalDiscoveryController extends Controller
 {
@@ -17,12 +19,13 @@ class AnimalDiscoveryController extends Controller
             'is_favoured' => 'required|boolean'
         ]);
 
-        // Check if animal exists in this hike
-        $animalInHike = DB::table('hike_hosted_animals')
-            ->where('hike_id', $request->hike_id)
-            ->where('animal_id', $request->animal_id)
+        $hike = Hike::findOrFail($request->hike_id);
+        
+        // Check if animal exists in this hike using proper table references
+        $animalInHike = $hike->animals()
+            ->where('animals.animal_id', $request->animal_id)
             ->exists();
-
+        
         if (!$animalInHike) {
             return response()->json([
                 'message' => 'This animal is not available in this hike'
@@ -30,8 +33,7 @@ class AnimalDiscoveryController extends Controller
         }
 
         // Check if already discovered
-        $alreadyDiscovered = DB::table('discover_animals')
-            ->where('user_id', Auth::id())
+        $alreadyDiscovered = AnimalDiscovery::where('user_id', Auth::id())
             ->where('animal_id', $request->animal_id)
             ->where('hike_id', $request->hike_id)
             ->exists();
@@ -43,13 +45,11 @@ class AnimalDiscoveryController extends Controller
         }
 
         // Add discovery
-        DB::table('discover_animals')->insert([
+        AnimalDiscovery::create([
             'user_id' => Auth::id(),
             'animal_id' => $request->animal_id,
             'hike_id' => $request->hike_id,
-            'discoverd_animal_favoured' => $request->is_favoured,
-            'created_at' => now(),
-            'updated_at' => now(),
+            'discoverd_animal_favoured' => $request->is_favoured
         ]);
 
         return response()->json([
@@ -64,8 +64,7 @@ class AnimalDiscoveryController extends Controller
             'hike_id' => 'required|exists:hikes,hike_id',
         ]);
 
-        $deleted = DB::table('discover_animals')
-            ->where('user_id', Auth::id())
+        $deleted = AnimalDiscovery::where('user_id', Auth::id())
             ->where('animal_id', $request->animal_id)
             ->where('hike_id', $request->hike_id)
             ->delete();
@@ -88,40 +87,37 @@ class AnimalDiscoveryController extends Controller
             'hike_id' => 'required|exists:hikes,hike_id',
         ]);
 
-        $discovery = DB::table('discover_animals')
-            ->where('user_id', Auth::id())
-            ->where('animal_id', $request->animal_id)
-            ->where('hike_id', $request->hike_id);
+        $discovery = AnimalDiscovery::where([
+            'user_id' => Auth::id(),
+            'animal_id' => $request->animal_id,
+            'hike_id' => $request->hike_id
+        ])->first();
 
-        if (!$discovery->exists()) {
+        if (!$discovery) {
             return response()->json([
                 'message' => 'Discovery not found'
             ], 404);
         }
 
-        $discovery->update([
-            'discoverd_animal_favoured' => !$discovery->first()->discoverd_animal_favoured,
-            'updated_at' => now(),
-        ]);
+        $discovery->discoverd_animal_favoured = !$discovery->discoverd_animal_favoured;
+        $discovery->save();
 
         return response()->json([
-            'message' => 'Favorite status toggled successfully'
+            'message' => 'Favorite status toggled successfully',
+            'is_favoured' => $discovery->discoverd_animal_favoured
         ]);
     }
 
     public function getDiscoveryStats(Request $request)
     {
-        $userId = $request->user()->id;
-
-        // Get total discoverable animals
+        // Get total discoverable animals across all hikes
         $totalDiscoverableAnimals = DB::table('hike_hosted_animals')
             ->select('animal_id')
             ->distinct()
             ->count();
 
-        // Get total discovered animals by the user
-        $discoveredAnimals = DB::table('discover_animals')
-            ->where('user_id', $userId)
+        // Get total discovered animals by the current user
+        $discoveredAnimals = AnimalDiscovery::where('user_id', Auth::id())
             ->select('animal_id')
             ->distinct()
             ->count();
@@ -137,26 +133,17 @@ class AnimalDiscoveryController extends Controller
 
     public function getDetailedDiscoveryStats(Request $request)
     {
-        $userId = $request->user()->id;
-
-        // Get all hikes with their animals
-        $hikesStats = DB::table('hikes')
-            ->select(
-                'hikes.hike_id',
-                'hikes.hike_name',
-                DB::raw('COUNT(DISTINCT hha.animal_id) as total_animals'),
-                DB::raw('COUNT(DISTINCT da.animal_id) as discovered_animals')
-            )
+        $hikesStats = Hike::select('hikes.hike_id', 'hikes.hike_name')
+            ->selectRaw('COUNT(DISTINCT hha.animal_id) as total_animals')
+            ->selectRaw('COUNT(DISTINCT da.animal_id) as discovered_animals')
             ->leftJoin('hike_hosted_animals as hha', 'hikes.hike_id', '=', 'hha.hike_id')
-            ->leftJoin('discover_animals as da', function($join) use ($userId) {
+            ->leftJoin('discover_animals as da', function($join) {
                 $join->on('hikes.hike_id', '=', 'da.hike_id')
-                    ->where('da.user_id', '=', $userId);
+                    ->where('da.user_id', '=', Auth::id());
             })
             ->groupBy('hikes.hike_id', 'hikes.hike_name')
-            ->get();
-
-        return response()->json([
-            'hikes' => $hikesStats->map(function($hike) {
+            ->get()
+            ->map(function($hike) {
                 return [
                     'hike_id' => $hike->hike_id,
                     'hike_name' => $hike->hike_name,
@@ -166,7 +153,31 @@ class AnimalDiscoveryController extends Controller
                         ? round(($hike->discovered_animals / $hike->total_animals) * 100, 2) 
                         : 0
                 ];
-            })
+            });
+
+        return response()->json([
+            'hikes' => $hikesStats
+        ]);
+    }
+
+    public function getAllDiscoveries()
+    {
+        $discoveries = AnimalDiscovery::with(['animal', 'hike'])
+            ->where('user_id', Auth::id())
+            ->get()
+            ->map(function($discovery) {
+                return [
+                    'animal_id' => $discovery->animal_id,
+                    'animal_name' => $discovery->animal->animal_common_name,
+                    'hike_id' => $discovery->hike_id,
+                    'hike_name' => $discovery->hike->hike_name,
+                    'is_favoured' => $discovery->discoverd_animal_favoured,
+                    'discovered_at' => $discovery->created_at
+                ];
+            });
+
+        return response()->json([
+            'discoveries' => $discoveries
         ]);
     }
 }

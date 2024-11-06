@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Animal;
+use Illuminate\Http\Request;
 
 class AnimalController extends Controller
 {
-    //
     public function getAllAnimals()
     {
         $animals = Animal::all();
@@ -16,7 +15,7 @@ class AnimalController extends Controller
 
     public function getOneAnimal($id)
     {
-        $animal = Animal::where('animal_id', $id)->firstOrfail();
+        $animal = Animal::findOrFail($id);
         return response()->json($animal);
     }
 }

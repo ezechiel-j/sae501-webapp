@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Plant;
+use Illuminate\Http\Request;
 
 class PlantController extends Controller
 {
-    //
     public function getAllPlants()
     {
         $plants = Plant::all();
@@ -16,7 +15,7 @@ class PlantController extends Controller
 
     public function getOnePlant($id)
     {
-        $plant = Plant::where('plant_id', $id)->firstOrFail();
+        $plant = Plant::findOrFail($id);
         return response()->json($plant);
     }
 }
