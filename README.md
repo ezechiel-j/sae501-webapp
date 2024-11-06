@@ -1,141 +1,424 @@
-# SAÉ501 Web Application
+# Documentation de l'API SAE501
 
-# Collaboration avec GitHub
+Cette API permet de gérer les randonnées, les découvertes de plantes et d'animaux. Elle utilise l'authentification via Laravel Sanctum.
 
-Ce guide fournit les étapes essentielles pour collaborer efficacement sur ce projet en utilisant GitHub.
+## Postman Collection
 
-## Configuration initiale
+Vous retrouverez ci-joint l'accès rapide à la collection Postman vous permettant de tester les requêtes rapidement et facilement : [Postman Collection](https://www.postman.com/spaceflight-specialist-94457815/sae501/collection/utajc81/sae501?action=share&creator=35061547)
 
-1. Cloner le dépôt :
+Vous trouverez également les détails de chaque requête dans la documentation ci-dessous.
 
-    ```
-    git clone https://github.com/utilisateur/nom-du-repo.git
-    ```
+## Table des matières
 
-2. Configurer votre nom et email Git :
-    ```
-    git config user.name "Votre Nom"
-    git config user.email "votre.email@exemple.com"
-    ```
+-   [Authentification](#authentification)
+-   [Randonnées](#randonnées)
+-   [Plantes](#plantes)
+-   [Animaux](#animaux)
+-   [Activités de randonnée](#activités-de-randonnée)
 
-## Workflow de base
+## Headers requis pour les routes protégées
 
-1. Créer une nouvelle branche pour votre fonctionnalité :
+Pour toutes les routes protégées, les headers suivants sont requis :
+| Key | Value |
+|--------|-------|
+| Authorization | Bearer _votre-token_ |
+| Accept | application/json |
 
-    ```
-    git checkout -b nom-de-votre-fonctionnalite
-    ```
+## Authentification
 
-2. Faire vos modifications et les commiter :
+### Inscription
 
-    ```
-    git add .
-    git commit -m "Description concise de vos modifications"
-    ```
+**POST** `/api/register`
 
-3. Pousser votre branche vers GitHub :
+Permet de créer un nouveau compte utilisateur.
 
-    ```
-    git push origin nom-de-votre-fonctionnalite
-    ```
+-   **Body**:
+    | Key | Value | Requis |
+    |--------|-------|---------|
+    | name | string | Oui |
+    | email | string | Oui |
+    | password | string | Oui |
+    | password_confirmation | string | Oui |
 
-4. Choisissez l'une des deux options suivantes :
+### Connexion
 
-    a) Créer une Pull Request (recommandé) :
+**POST** `/api/login`
 
-    - Allez sur GitHub et créez une nouvelle Pull Request pour votre branche.
-    - Cette méthode permet à d'autres développeurs d'examiner votre code avant qu'il ne soit fusionné.
-    - Les reviewers peuvent laisser des commentaires, suggérer des modifications, et approuver les changements.
-    - Une fois approuvée, la Pull Request peut être fusionnée dans la branche principale.
+Permet de se connecter et récupérer un token d'accès.
 
-    b) Fusionner directement (à utiliser avec précaution) :
+-   **Body**:
+    | Key | Value | Requis |
+    |--------|-------|---------|
+    | email | string | Oui |
+    | password | string | Oui |
+-   **Réponse**:
+    | Key | Value |
+    |--------|-------|
+    | token | string |
+    | user.id | integer |
+    | user.name | string |
+    | user.email | string |
 
-    - Si vous avez les permissions nécessaires et que le projet le permet, vous pouvez fusionner directement :
-        ```
-        git checkout main
-        git merge nom-de-votre-fonctionnalite
-        git push origin main
-        ```
-    - Cette méthode contourne le processus de revue de code, donc utilisez-la uniquement pour des changements mineurs ou urgents, selon les pratiques de votre équipe.
+### Routes protégées
 
-    ```
+#### Déconnexion
 
-    ```
+**POST** `/api/logout`
 
-## Commandes Git utiles
+Permet de se déconnecter et révoquer le token d'accès.
 
-### Gestion des branches
+-   **Headers**:
+    | Key | Value |
+    |--------|-------|
+    | Authorization | Bearer _votre-token_ |
 
--   Voir la liste des branches locales :
+#### Profil utilisateur
 
-    ```
-    git branch
-    ```
+**GET** `/api/me`
 
--   Voir la liste de toutes les branches (locales et distantes) :
+Récupère les informations de l'utilisateur connecté.
 
-    ```
-    git branch -a
-    ```
+-   **Headers**:
+    | Key | Value |
+    |--------|-------|
+    | Authorization | Bearer _votre-token_ |
 
--   Changer de branche :
+#### Gestion du mot de passe
 
-    ```
-    git checkout nom-de-la-branche
-    ```
+**POST** `/api/reset-password`
 
--   Supprimer une branche locale :
-    ```
-    git branch -d nom-de-la-branche
-    ```
+Permet de réinitialiser le mot de passe de l'utilisateur.
 
-### Mise à jour et synchronisation
+-   **Query params**:
+    | Key | Value | Requis |
+    |--------|-------|---------|
+    | email | string | Oui |
+    | token | string | Oui |
+    | password | string | Oui |
+    | password_confirmation | string | Oui |
 
--   Mettre à jour votre branche locale avec les changements distants :
+## Randonnées
 
-    ```
-    git pull origin nom-de-la-branche
-    ```
+### Routes publiques
 
--   Voir l'état de votre dépôt local :
+**GET** `/api/hikes`
 
-    ```
-    git status
-    ```
+Récupère la liste des randonnées.
 
--   Voir l'historique des commits :
-    ```
-    git log
-    ```
+-   **Body**:
+    | Key | Value |
+    |--------|-------|
+    | hike_id | integer |
+    | hike_name | string |
+    | hike_distance | float |
+    | hike_duration | string |
+    | hike_difficulty | 'easy', 'medium', 'hard' |
+    | hike_start_point_return | 'false', 'true' |
+    | search | string |
 
-### Gestion des modifications
+**GET** `/api/hikes/{id}`
 
--   Annuler les modifications non commitées :
+Récupère les détails d'une randonnée spécifique.
 
-    ```
-    git checkout -- nom-du-fichier
-    ```
+-   **Path params**:
+    | Key | Value | Requis |
+    |--------|-------|---------|
+    | id | integer | Oui |
 
--   Créer un commit de correction pour le dernier commit :
-    ```
-    git commit --amend
-    ```
+### Routes protégées
 
-## Bonnes pratiques
+#### Favoris
 
--   Gardez vos commits atomiques et descriptifs.
--   Mettez à jour votre branche régulièrement avec la branche principale :
-    ```
-    git checkout main
-    git pull origin main
-    git checkout nom-de-votre-fonctionnalite
-    git merge main
-    ```
--   Utilisez des issues GitHub pour suivre les tâches et les bugs.
--   Demandez des revues de code avant de fusionner.
+**PATCH** `/api/hikes/toggle-favorite`
 
-## Ressources utiles
+Permet d'ajouter ou retirer une randonnée des favoris.
 
--   [Documentation officielle de Git](https://git-scm.com/doc)
--   [Guide GitHub Flow](https://guides.github.com/introduction/flow/)
--   [Aide GitHub](https://help.github.com/)
+-   **Headers**:
+    | Key | Value |
+    |--------|-------|
+    | Authorization | Bearer _votre-token_ |
+-   **Query params**:
+    | Key | Value | Requis |
+    |--------|-------|---------|
+    | hike_id | integer | Oui |
+
+## Plantes
+
+### Routes publiques
+
+**GET** `/api/plants`
+
+Récupère la liste des plantes.
+
+-   **Body**:
+    | Key | Value | Requis |
+    |--------|-------|---------|
+    | plant_id | integer |
+    | plant_common_name | string |
+    | plant_scientific_name | string |
+    | created_at | date |
+    | updated_at | date |
+
+**GET** `/api/plants/{id}`
+
+Récupère les détails d'une plante spécifique.
+
+-   **Body**:
+    | Key | Value |
+    |--------|-------|
+    | plant_id | integer |
+    | plant_common_name | string |
+    | plant_scientific_name | string |
+    | created_at | date |
+    | updated_at | date |
+
+### Routes protégées
+
+**GET** `/api/plant-discoveries/all`
+
+Récupère la liste totale des découvertes de plantes.
+
+-   **Headers**:
+    | Key | Value |
+    |--------|-------|
+    | Authorization | Bearer _votre-token_ |
+-   **Body**:
+    | Key | Value |
+    |--------|-------|
+    | plant_id | integer |
+    | plant_name | string |
+    | hike_id | integer |
+    | hike_name | string |
+    | is_favorite | boolean |
+    | discovered_at | datetime |
+
+**GET** `/api/plant-discoveries/stats`
+
+Récupère les statistiques totales des découvertes de plantes.
+
+-   **Headers**:
+    | Key | Value |
+    |--------|-------|
+    | Authorization | Bearer _votre-token_ |
+-   **Body**:
+    | Key | Value |
+    |--------|-------|
+    | total_discoverable | integer |
+    | total_discovered | integer |
+    | discovery_percentage | float |
+
+**GET** `/api/plants/discovery-stats/detailed`
+
+Récupère les statistiques détaillées des découvertes de plantes dans chaque randonnée.
+
+-   **Headers**:
+    | Key | Value |
+    |--------|-------|
+    | Authorization | Bearer _votre-token_ |
+-   **Body**:
+    | Key | Value |
+    |--------|-------|
+    | hike_id | integer |
+    | hike_name | string |
+    | total_plants | integer |
+    | discovered_plants | integer |
+    | discovery_percentage | float |
+
+**POST** `/api/plants/discover`
+
+Permet de découvrir une plante lors d'une randonnée.
+
+-   **Headers**:
+    | Key | Value |
+    |--------|-------|
+    | Authorization | Bearer _votre-token_ |
+-   **Query params**:
+    | Key | Value | Requis |
+    |--------|-------|---------|
+    | plant_id | integer | Oui |
+    | hike_id | integer | Oui |
+
+**DELETE** `/api/plants/discover`
+
+Permet de supprimer une découverte de plante.
+
+-   **Headers**:
+    | Key | Value |
+    |--------|-------|
+    | Authorization | Bearer _votre-token_ |
+-   **Query params**:
+    | Key | Value | Requis |
+    |--------|-------|---------|
+    | plant_id | integer | Oui |
+    | hike_id | integer | Oui |
+
+**PATCH** `/api/plants/discover/favorite`
+
+Permet d'ajouter ou retirer une découverte de plante aux favoris.
+
+-   **Headers**:
+    | Key | Value |
+    |--------|-------|
+    | Authorization | Bearer _votre-token_ |
+-   **Body**:
+    | Key | Value | Requis |
+    |--------|-------|---------|
+    | discovery_id | integer | Oui |
+    | is_favorite | boolean | Oui |
+
+## Animaux
+
+### Routes publiques
+
+**GET** `/api/animals`
+
+Récupère la liste des animaux.
+
+-   **Query params**:
+    | Key | Value | Requis |
+    |--------|-------|---------|
+    | page | integer | Non |
+    | per_page | integer | Non |
+    | type | string | Non |
+    | search | string | Non |
+
+**GET** `/api/animals/{id}`
+
+Récupère les détails d'un animal spécifique.
+
+-   **Path params**:
+    | Key | Value | Requis |
+    |--------|-------|---------|
+    | id | integer | Oui |
+
+### Routes protégées
+
+**GET** `/api/animal-discoveries/all`
+
+Récupère la liste totale des découvertes d'animaux.
+
+-   **Headers**:
+    | Key | Value |
+    |--------|-------|
+    | Authorization | Bearer _votre-token_ |
+-   **Body**:
+    | Key | Value |
+    |--------|-------|
+    | animal_id | integer |
+    | animal_name | string |
+    | hike_id | integer |
+    | hike_name | string |
+    | is_favorite | boolean |
+    | discovered_at | datetime |
+
+**GET** `/api/animal-discoveries/stats`
+
+Récupère les statistiques totales des découvertes d'animaux.
+
+-   **Headers**:
+    | Key | Value |
+    |--------|-------|
+    | Authorization | Bearer _votre-token_ |
+-   **Response**:
+    | Key | Value |
+    |--------|-------|
+    | total_discoverable | integer |
+    | total_discovered | integer |
+    | discovery_percentage | float |
+
+**GET** `/api/animal-discoveries/detailed-stats`
+
+Récupère les statistiques détaillées des découvertes d'animaux dans chaque randonnée.
+
+-   **Headers**:
+    | Key | Value |
+    |--------|-------|
+    | Authorization | Bearer _votre-token_ |
+-   **Response**:
+    | Key | Value |
+    |--------|-------|
+    | hike_id | integer |
+    | hike_name | string |
+    | total_animals | integer |
+    | discovered_animals | integer |
+    | discovery_percentage | float |
+
+**PATCH** `/api/animals/discover/favorite`
+
+Permet d'ajouter ou retirer une découverte d'animal aux favoris.
+
+-   **Headers**:
+    | Key | Value |
+    |--------|-------|
+    | Authorization | Bearer _votre-token_ |
+-   **Query params**:
+    | Key | Value | Requis |
+    |--------|-------|---------|
+    | animal_id | integer | Oui |
+    | hike_id | integer | Oui |
+
+## Activités de randonnée
+
+### Routes protégées
+
+**POST** `/api/hiking/start`
+
+Permet de commencer une randonnée.
+
+-   **Headers**:
+    | Key | Value |
+    |--------|-------|
+    | Authorization | Bearer _votre-token_ |
+-   **Query params**:
+    | Key | Value | Requis |
+    |--------|-------|---------|
+    | hike_id | integer | Oui |
+
+**POST** `/api/hiking/end`
+
+Permet de terminer une randonnée.
+
+-   **Headers**:
+    | Key | Value |
+    |--------|-------|
+    | Authorization | Bearer _votre-token_ |
+-   **Query params**:
+    | Key | Value | Requis |
+    |--------|-------|---------|
+    | hike_id | integer | Oui |
+
+**GET** `/api/hiking/current`
+
+Récupère les informations de la randonnée en cours.
+
+-   **Headers**:
+    | Key | Value |
+    |--------|-------|
+    | Authorization | Bearer _votre-token_ |
+
+**GET** `/api/hiking/stats`
+
+Récupère les statistiques de toutes les randonnées.
+
+-   **Headers**:
+    | Key | Value |
+    |--------|-------|
+    | Authorization | Bearer _votre-token_ |
+-   **Body**:
+    | Key | Value |
+    |--------|-------|
+    | total_hikes | integer |
+    | completed_hikes | integer |
+    | ongoing_hikes | integer |
+    | average_duration_minutes | float |
+
+## Codes de réponse
+
+-   `200`: Succès
+-   `201`: Création réussie
+-   `400`: Erreur de requête
+-   `401`: Non authentifié
+-   `403`: Non autorisé
+-   `404`: Ressource non trouvée
+-   `422`: Erreur de validation
+-   `500`: Erreur serveur
