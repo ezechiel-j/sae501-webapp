@@ -15,7 +15,10 @@ Route::get('/plants', [App\Http\Controllers\PlantController::class, 'getAllPlant
 Route::get('/plants/{id}', [App\Http\Controllers\PlantController::class, 'getOnePlant']);
 
 Route::post('/register', [AuthController::class, 'register']);
-Route::post('/login', [AuthController::class, 'login']);
+
+Route::middleware('throttle:5,1')->group(function () {
+  Route::post('/login', [AuthController::class, 'login']);
+});
 
 // Protected routes
 Route::middleware('auth:sanctum')->group(function () {
