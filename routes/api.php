@@ -7,6 +7,7 @@ use App\Http\Controllers\PlantDiscoveryController;
 use App\Http\Controllers\AnimalDiscoveryController;
 use App\Http\Controllers\HikingController;
 use App\Http\Controllers\HikeController;
+
 Route::get('/hikes', [App\Http\Controllers\HikeController::class, 'getAllHikes']);
 Route::get('/hikes/{id}', [App\Http\Controllers\HikeController::class, 'getOneHike']);
 Route::get('/animals', [App\Http\Controllers\AnimalController::class, 'getAllAnimals']);
