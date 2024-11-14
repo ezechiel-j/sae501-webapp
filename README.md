@@ -4,7 +4,9 @@ Cette API permet de gérer les randonnées, les découvertes de plantes et d'ani
 
 ## Postman Collection
 
-Vous retrouverez ci-joint l'accès rapide à la collection Postman vous permettant de tester les requêtes rapidement et facilement : [Postman Collection](https://www.postman.com/spaceflight-specialist-94457815/sae501/collection/utajc81/sae501?action=share&creator=35061547)
+Vous retrouverez ci-joint l'accès rapide à la collection Postman vous permettant de tester les requêtes rapidement et facilement : [Postman Collection](https://www.postman.com/spaceflight-specialist-94457815/sae501/collection/5dr8t37/sae501?action=share&creator=35061547)
+
+Il vous suffira uniquement de remplacer `votre-token` par le token d'accès que vous recevez lors de la connexion.
 
 Vous trouverez également les détails de chaque requête dans la documentation ci-dessous.
 
@@ -28,7 +30,7 @@ Pour toutes les routes protégées, les headers suivants sont requis :
 
 ### Inscription
 
-**POST** `/api/register`
+**POST** `randoludique-back.sc1zeep6040.universe.wf/api/register`
 
 Permet de créer un nouveau compte utilisateur.
 
@@ -42,7 +44,7 @@ Permet de créer un nouveau compte utilisateur.
 
 ### Connexion
 
-**POST** `/api/login`
+**POST** `randoludique-back.sc1zeep6040.universe.wf/api/login`
 
 Permet de se connecter et récupérer un token d'accès.
 
@@ -63,7 +65,7 @@ Permet de se connecter et récupérer un token d'accès.
 
 #### Déconnexion
 
-**POST** `/api/logout`
+**POST** `randoludique-back.sc1zeep6040.universe.wf/api/logout`
 
 Permet de se déconnecter et révoquer le token d'accès.
 
@@ -74,7 +76,7 @@ Permet de se déconnecter et révoquer le token d'accès.
 
 #### Profil utilisateur
 
-**GET** `/api/me`
+**GET** `randoludique-back.sc1zeep6040.universe.wf/api/me`
 
 Récupère les informations de l'utilisateur connecté.
 
@@ -85,7 +87,7 @@ Récupère les informations de l'utilisateur connecté.
 
 #### Gestion du mot de passe
 
-**POST** `/api/reset-password`
+**POST** `randoludique-back.sc1zeep6040.universe.wf/api/reset-password`
 
 Permet de réinitialiser le mot de passe de l'utilisateur.
 
@@ -101,7 +103,7 @@ Permet de réinitialiser le mot de passe de l'utilisateur.
 
 ### Routes publiques
 
-**GET** `/api/hikes`
+**GET** `randoludique-back.sc1zeep6040.universe.wf/api/hikes`
 
 Récupère la liste des randonnées.
 
@@ -116,7 +118,7 @@ Récupère la liste des randonnées.
     | hike_start_point_return | 'false', 'true' |
     | search | string |
 
-**GET** `/api/hikes/{id}`
+**GET** `randoludique-back.sc1zeep6040.universe.wf/api/hikes/{id}`
 
 Récupère les détails d'une randonnée spécifique.
 
@@ -129,7 +131,7 @@ Récupère les détails d'une randonnée spécifique.
 
 #### Favoris
 
-**PATCH** `/api/hikes/toggle-favorite`
+**PATCH** `randoludique-back.sc1zeep6040.universe.wf/api/hikes/toggle-favorite`
 
 Permet d'ajouter ou retirer une randonnée des favoris.
 
@@ -146,7 +148,7 @@ Permet d'ajouter ou retirer une randonnée des favoris.
 
 ### Routes publiques
 
-**GET** `/api/plants`
+**GET** `randoludique-back.sc1zeep6040.universe.wf/api/plants`
 
 Récupère la liste des plantes.
 
@@ -159,7 +161,7 @@ Récupère la liste des plantes.
     | created_at | date |
     | updated_at | date |
 
-**GET** `/api/plants/{id}`
+**GET** `randoludique-back.sc1zeep6040.universe.wf/api/plants/{id}`
 
 Récupère les détails d'une plante spécifique.
 
@@ -174,7 +176,7 @@ Récupère les détails d'une plante spécifique.
 
 ### Routes protégées
 
-**GET** `/api/plant-discoveries/all`
+**GET** `randoludique-back.sc1zeep6040.universe.wf/api/plant-discoveries/all`
 
 Récupère la liste totale des découvertes de plantes.
 
@@ -192,7 +194,7 @@ Récupère la liste totale des découvertes de plantes.
     | is_favorite | boolean |
     | discovered_at | datetime |
 
-**GET** `/api/plant-discoveries/stats`
+**GET** `randoludique-back.sc1zeep6040.universe.wf/api/plant-discoveries/stats`
 
 Récupère les statistiques totales des découvertes de plantes.
 
@@ -207,7 +209,7 @@ Récupère les statistiques totales des découvertes de plantes.
     | total_discovered | integer |
     | discovery_percentage | float |
 
-**GET** `/api/plants/discovery-stats/detailed`
+**GET** `randoludique-back.sc1zeep6040.universe.wf/api/plants/discovery-stats/detailed`
 
 Récupère les statistiques détaillées des découvertes de plantes dans chaque randonnée.
 
@@ -224,7 +226,7 @@ Récupère les statistiques détaillées des découvertes de plantes dans chaque
     | discovered_plants | integer |
     | discovery_percentage | float |
 
-**POST** `/api/plants/discover`
+**POST** `randoludique-back.sc1zeep6040.universe.wf/api/plants/discover`
 
 Permet de découvrir une plante lors d'une randonnée.
 
@@ -238,7 +240,7 @@ Permet de découvrir une plante lors d'une randonnée.
     | plant_id | integer | Oui |
     | hike_id | integer | Oui |
 
-**DELETE** `/api/plants/discover`
+**DELETE** `randoludique-back.sc1zeep6040.universe.wf/api/plants/discover`
 
 Permet de supprimer une découverte de plante.
 
@@ -252,7 +254,7 @@ Permet de supprimer une découverte de plante.
     | plant_id | integer | Oui |
     | hike_id | integer | Oui |
 
-**PATCH** `/api/plants/discover/favorite`
+**PATCH** `randoludique-back.sc1zeep6040.universe.wf/api/plants/discover/favorite`
 
 Permet d'ajouter ou retirer une découverte de plante aux favoris.
 
@@ -270,7 +272,7 @@ Permet d'ajouter ou retirer une découverte de plante aux favoris.
 
 ### Routes publiques
 
-**GET** `/api/animals`
+**GET** `randoludique-back.sc1zeep6040.universe.wf/api/animals`
 
 Récupère la liste des animaux.
 
@@ -282,7 +284,7 @@ Récupère la liste des animaux.
     | type | string | Non |
     | search | string | Non |
 
-**GET** `/api/animals/{id}`
+**GET** `randoludique-back.sc1zeep6040.universe.wf/api/animals/{id}`
 
 Récupère les détails d'un animal spécifique.
 
@@ -293,7 +295,7 @@ Récupère les détails d'un animal spécifique.
 
 ### Routes protégées
 
-**GET** `/api/animal-discoveries/all`
+**GET** `randoludique-back.sc1zeep6040.universe.wf/api/animal-discoveries/all`
 
 Récupère la liste totale des découvertes d'animaux.
 
@@ -311,7 +313,7 @@ Récupère la liste totale des découvertes d'animaux.
     | is_favorite | boolean |
     | discovered_at | datetime |
 
-**GET** `/api/animal-discoveries/stats`
+**GET** `randoludique-back.sc1zeep6040.universe.wf/api/animal-discoveries/stats`
 
 Récupère les statistiques totales des découvertes d'animaux.
 
@@ -326,7 +328,7 @@ Récupère les statistiques totales des découvertes d'animaux.
     | total_discovered | integer |
     | discovery_percentage | float |
 
-**GET** `/api/animal-discoveries/detailed-stats`
+**GET** `randoludique-back.sc1zeep6040.universe.wf/api/animal-discoveries/detailed-stats`
 
 Récupère les statistiques détaillées des découvertes d'animaux dans chaque randonnée.
 
@@ -343,7 +345,7 @@ Récupère les statistiques détaillées des découvertes d'animaux dans chaque 
     | discovered_animals | integer |
     | discovery_percentage | float |
 
-**PATCH** `/api/animals/discover/favorite`
+**PATCH** `randoludique-back.sc1zeep6040.universe.wf/api/animals/discover/favorite`
 
 Permet d'ajouter ou retirer une découverte d'animal aux favoris.
 
@@ -361,7 +363,7 @@ Permet d'ajouter ou retirer une découverte d'animal aux favoris.
 
 ### Routes protégées
 
-**POST** `/api/hiking/start`
+**POST** `randoludique-back.sc1zeep6040.universe.wf/api/hiking/start`
 
 Permet de commencer une randonnée.
 
@@ -374,7 +376,7 @@ Permet de commencer une randonnée.
     |--------|-------|---------|
     | hike_id | integer | Oui |
 
-**POST** `/api/hiking/end`
+**POST** `randoludique-back.sc1zeep6040.universe.wf/api/hiking/end`
 
 Permet de terminer une randonnée.
 
@@ -387,7 +389,7 @@ Permet de terminer une randonnée.
     |--------|-------|---------|
     | hike_id | integer | Oui |
 
-**GET** `/api/hiking/current`
+**GET** `randoludique-back.sc1zeep6040.universe.wf/api/hiking/current`
 
 Récupère les informations de la randonnée en cours.
 
@@ -396,7 +398,7 @@ Récupère les informations de la randonnée en cours.
     |--------|-------|
     | Authorization | Bearer _votre-token_ |
 
-**GET** `/api/hiking/stats`
+**GET** `randoludique-back.sc1zeep6040.universe.wf/api/hiking/stats`
 
 Récupère les statistiques de toutes les randonnées.
 
