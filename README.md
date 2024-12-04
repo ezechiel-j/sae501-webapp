@@ -38,9 +38,9 @@ Permet de créer un nouveau compte utilisateur.
     | Key | Value | Requis |
     |--------|-------|---------|
     | name | string | Oui |
+    | first_name | string | Oui |
     | email | string | Oui |
     | password | string | Oui |
-    | password_confirmation | string | Oui |
 
 ### Connexion
 
