@@ -7,6 +7,13 @@ use App\Http\Controllers\PlantDiscoveryController;
 use App\Http\Controllers\AnimalDiscoveryController;
 use App\Http\Controllers\HikingController;
 use App\Http\Controllers\HikeController;
+use App\Http\Controllers\HikeHostedAnimalController;
+use App\Http\Controllers\HikeHostedPlantController;
+
+Route::get('/hikes/hosted-animals', [HikeHostedAnimalController::class, 'getAnimalsByHike']);
+Route::get('/hikes/hosted-plants', [HikeHostedPlantController::class, 'getPlantsByHike']);
+
+
 Route::get('/hikes', [App\Http\Controllers\HikeController::class, 'getAllHikes']);
 Route::get('/hikes/{id}', [App\Http\Controllers\HikeController::class, 'getOneHike']);
 Route::get('/animals', [App\Http\Controllers\AnimalController::class, 'getAllAnimals']);
